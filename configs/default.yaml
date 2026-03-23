@@ -1,0 +1,160 @@
+# ObserveGuard Default Configuration
+# YAML configuration for experiments and evaluation
+
+# Agent configuration
+agent:
+  # Base agent settings
+  base:
+    max_steps: 20
+    success_threshold: 0.7
+    
+  # ReAct agent settings
+  react:
+    model_name: gpt-3.5-turbo
+    reasoning_confidence_threshold: 0.6
+    action_generation_temperature: 0.7
+    
+  # ObserveGuard wrapper settings
+  observe_guard:
+    probe_count: 3
+    probe_types:
+      - noop
+      - state_verify
+      - observation_compare
+      - ui_consistency
+      - timing_check
+      - multimodal_sync
+    
+    # Security thresholds
+    anomaly_threshold: 0.75  # Below this: normal. Above: investigate.
+    tau: 0.85                 # Attack decision threshold
+    enable_probes: true      # Enable probe-based verification
+    
+    # Drift detection settings
+    observation_drift_threshold: 0.3
+    action_consistency_threshold: 0.5
+    
+    # Transition model settings
+    transition_model_path: ./models/transition_g_theta.pt
+    load_pretrained: false
+
+# Dataset configuration
+datasets:
+  osworld:
+    download_url: https://github.com/xlang-ai/OSWorld
+    output_dir: ./data/osworld
+    verified_tasks_split: 2025-verified
+    num_tasks_eval: 10
+    augment_with_mutations: true
+    num_mutation_variants: 3
+    
+  ssv2:
+    output_dir: ./data/ssv2
+    noise_levels: [0.1, 0.2, 0.3]
+    augmentation:
+      gaussian_noise_std: 0.2
+      audio_perturbation_db: 10.0
+      frame_dropout_rate: 0.15
+      temporal_jitter: 0.1
+      color_shift_magnitude: 0.2
+    
+    # Non-IID data distribution (Dirichlet)
+    non_iid_alpha: 0.5  # Lower = more non-IID
+    num_edge_devices: 5
+
+# Evaluation configuration
+evaluation:
+  # OSWorld evaluation
+  osworld:
+    max_steps_per_task: 20
+    tasks_to_evaluate: verified
+    num_tasks: 10
+    track_energy: true
+    
+  # SSv2 drift evaluation
+  ssv2_drift:
+    max_steps_per_task: 15
+    noise_levels: [0.0, 0.1, 0.2, 0.3]
+    videos_per_level: 10
+    augmentations:
+      - gaussian_noise
+      - frame_dropout
+      - temporal_jitter
+      - color_shift
+      - audio_perturbation
+  
+  # Attack simulation
+  attacks:
+    attacks_per_type: 50
+    attack_types:
+      - rebinding
+      - observation_flip
+      - timing_attack
+      - multimodal_mismatch
+    
+    # Attack parameters
+    attack_config:
+      rebinding_cache_size: 5
+      observation_flip_magnitude: 0.3
+      timing_delay_ms: 100
+      multimodal_sync_error_ms: 50
+
+# Energy tracking configuration
+energy:
+  enable_tracking: true
+  tracker_type: codecarbon  # codecarbon or mock
+  codecarbon:
+    offline_mode: false
+    country_iso_code: IN  # India (Delhi)
+    log_dir: ./logs
+  
+  # Mock energy (for testing)
+  mock:
+    power_consumption_w: 5.0  # Raspberry Pi 5 typical
+    inference_time_per_step_ms: 100
+
+# Hardware configuration
+hardware:
+  edge_device:
+    type: raspberry_pi_5
+    cpu_cores: 8
+    ram_gb: 8
+    storage_gb: 256
+    
+  host_machine:
+    type: ubuntu_22_04
+    min_ram_gb: 16
+    gpu_optional: true
+
+# Logging and output
+logging:
+  level: INFO
+  log_file: ./logs/observeguard.log
+  log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+output:
+  results_dir: ./results
+  save_trajectories: true
+  save_security_logs: true
+  save_energy_logs: true
+  output_format: json
+
+# Random seed for reproducibility
+reproducibility:
+  seed: 42
+  deterministic_mode: true
+  pin_memory: true
+
+# Compute configuration
+compute:
+  num_workers: 4
+  batch_size: 1
+  device: cpu  # cpu or cuda (GPU)
+  fp16_enabled: false
+  memory_efficient: true
+
+# Model paths
+models:
+  clip_model: ViT-B/32
+  transition_model: ./models/transition_g_theta.pt
+  cache_dir: ./models/.cache

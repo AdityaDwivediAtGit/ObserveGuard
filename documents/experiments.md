@@ -3,7 +3,7 @@
 **Project**: ObserveGuard – Observation-Centric Secure Multimodal Agents for Trustworthy Edge Deployment  
 **Paper Goal**: Demonstrate +13% task success, 100% rebinding attack mitigation, 22% energy savings on edge devices  
 **Date**: March 2026  
-**Author**: Aditya (Independent Researcher, Data & AI Engineer, IEEE Member)
+**Author**: Aditya (Independent Researcher, Data & AI Engineer, TCS)
 
 This document provides step-by-step instructions to reproduce the experiments from the ObserveGuard paper.
 
@@ -218,6 +218,6 @@ Run via loop script: `evaluation/ablation_sweep.sh`
 - **Memory OOM on Pi 5**: Reduce batch size or use smaller CLIP variant
 - **CodeCarbon offline**: Set `offline_mode=True` if no internet
 
-Questions? Contact: aditya@example.com
+Questions? Contact: aditya.sdwivedi@tcs.com
 
 Happy experimenting – aim for top IEEE reproducibility!

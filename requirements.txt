@@ -1,0 +1,63 @@
+# ObserveGuard Requirements
+# Core framework and dependencies for Observation-Centric Secure Multimodal Agents
+
+# Deep Learning & Vision
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
+transformers==4.35.0
+
+# Computer Vision & Image Processing
+opencv-python==4.8.1.78
+pillow==10.1.0
+numpy==1.24.3
+
+# Multimodal Models
+clip==1.0
+opencv-contrib-python==4.8.1.78
+
+# Data Handling
+pandas==2.1.0
+scipy==1.11.0
+scikit-learn==1.3.0
+
+# Configuration & Utilities
+pyyaml==6.0
+python-dotenv==1.0.0
+tqdm==4.66.0
+
+# Monitoring & Logging
+codecarbon>=2.4.0
+tensorboard==2.14.0
+
+# Development & Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+black==23.10.0
+flake8==6.1.0
+mypy==1.6.0
+
+# Visualization & Reporting
+matplotlib==3.8.1
+seaborn==0.13.0
+plotly==5.17.0
+
+# Environment & System
+requests==2.31.0
+urllib3==2.0.0
+
+# Optional: For GPU support
+# torch-cuda-toolkit (install separately based on system)
+
+# Optional: For distributed training
+# pytorch-lightning==2.0.0
+# ray==2.8.0
+
+# Optional: For model serving
+# fastapi==0.104.0
+# uvicorn==0.24.0
+
+# Edge device optimizations (optional, uncomment for Raspberry Pi deployment)
+# tensorflow-lite-runtime==2.13.0
+# onnxruntime==1.16.0
+# executorch==0.1.0
