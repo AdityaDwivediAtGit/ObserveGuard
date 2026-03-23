@@ -364,17 +364,11 @@ If you use ObserveGuard in your research, please cite:
 
 ---
 
-## License
-
-MIT License - See LICENSE file for details
-
----
-
 ## Support & Contact
 
 - **Issues**: Open GitHub issues for bugs and feature requests
 - **Discussion**: GitHub Discussions for general questions
-- **Email**: aditya@example.com (for paper-related inquiries)
+- **Email**: aditya.sdwivedi@tcs.com (for paper-related inquiries)
 
 ---
 
@@ -383,9 +377,3 @@ MIT License - See LICENSE file for details
 - OSWorld team for the benchmark
 - CodeCarbon for energy tracking
 - IEEE for reproducibility standards
-
----
-
-**Last Updated**: March 2026  
-**Status**: Ready for submission  
-**Reproducibility**: IEEE ReviewerGuide Compliant ✓
