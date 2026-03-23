@@ -30,7 +30,7 @@ ObserveGuard is a comprehensive framework for building and evaluating secure mul
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/observeguard.git
+git clone https://github.com/AdityaDwivediAtGit/ObserveGuard.git
 cd observeguard
 
 # Run setup script (automated)

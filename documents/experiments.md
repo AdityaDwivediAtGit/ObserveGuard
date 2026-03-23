@@ -49,7 +49,7 @@ observeguard/
 
 ```bash
 # Clone repo (replace with your fork if needed)
-git clone https://github.com/yourusername/observeguard.git
+git clone https://github.com/AdityaDwivediAtGit/ObserveGuard.git
 cd observeguard
 
 # Optional: Conda environment (strongly recommended)
